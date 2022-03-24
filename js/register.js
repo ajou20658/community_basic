@@ -1,11 +1,11 @@
 const id=document.querySelector('#id'),
     pswd=document.querySelector('#pswd'),
     pswd2=document.querySelector('#pswd2'),
-    loginBtn=document.querySelector('button');
+    signupBtn=document.querySelector('button');
 
-loginBtn.addEventListener('click', loginhandler);
+signupBtn.addEventListener('click', signuphandler);
 
-function loginhandler(){
+function signuphandler(){
     const req={
         id: id.value,
         pswd: pswd.value,
