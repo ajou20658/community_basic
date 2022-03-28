@@ -12,4 +12,12 @@ function signuphandler(){
         pswd2:pswd2.value
     }
     console.log(req);
+    fetch("/register",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify(req),
+    })
+    
 }
