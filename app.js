@@ -25,32 +25,18 @@ app.get("/register",(req,res)=>{
   res.render("register");
 })
 
-app.listen(3000,()=>{
-  console.log("Server On");
-})
-
 app.post("/login",(req,res)=>{
   const user=new User(req.body);
   const response= user.login();
   return res.json(response);
-
-  // const success="";
-  // const msg="";
-  // console.log(userstorage.getusers("id","pswd","name"));
-
-  // if(user.users.id.includes(id)){
-  //   const idx=user.users.id.indexOf(id);
-  //   if(user.users.pswd[idx]===pswd){    
-  //     this.success="true";
-  //     return res.json({
-  //       success
-  //     });
-  //   }
-  // }
-  // this.success="false";
-  // return res.json({
-  //   success,
-  //   msg
-  // });
 });
 
+app.post("/register",(req,res)=>{
+  const user=new User(req.body);
+  const response= user.register();
+  return res.json(response);
+})
+
+app.listen(3000,()=>{
+  console.log("Server On");
+})

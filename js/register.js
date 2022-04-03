@@ -1,23 +1,41 @@
 const id=document.querySelector('#id'),
-    pswd=document.querySelector('#pswd'),
-    pswd2=document.querySelector('#pswd2'),
-    signupBtn=document.querySelector('button');
+  name=document.querySelector('#name'),
+  pswd=document.querySelector('#pswd'),
+  pswd2=document.querySelector('#pswd2'),
+  registerBtn=document.querySelector('button');
 
-signupBtn.addEventListener('click', signuphandler);
+registerBtn.addEventListener('click', registerhandler);
 
-function signuphandler(){
-    const req={
-        id: id.value,
-        pswd: pswd.value,
-        pswd2:pswd2.value
+document.querySelector('input').addEventListener('keypress',(e)=>{
+  if(e.key==='Enter'){
+    console.log('hi');
+  }
+})
+function registerhandler(){
+  if(pswd.value!==pswd2.value){
+    return alert('비밀번호가 일치하지 않습니다.');
+  }
+  const req={
+    id: id.value,
+    name: name.value,
+    pswd: pswd.value,
+  }
+  
+  fetch("/register",{
+    method:"POST",
+    headers: {
+      "Content-Type":"application/json"
+    },
+    body: JSON.stringify(req),
+  }).then((res) => res.json())
+  .then((res)=>{
+    if(res.success){
+      location.href="/login";
+      alert(res.msg);
+    }else {
+      alert(res.msg);
     }
-    console.log(req);
-    fetch("/register",{
-        method:"POST",
-        headers:{
-            "Content-Type":"application/json"
-        },
-        body:JSON.stringify(req),
-    })
-    
+  }).catch((err)=>console.error("register error"));
 }
+
+module.exports=register;

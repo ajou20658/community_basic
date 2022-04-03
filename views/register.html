@@ -26,6 +26,13 @@
                         <input type="text" id="id" name="id" class="int" title="ID" maxlength="20">
                         <span class="step_url"></span>
                     </span>
+                    <h3 class="join_title">
+                        <label for="name">이름</label>
+                    </h3>
+                    <span class="ps_box int_name">
+                        <input type="text" id="name" name="name" class="int" title="NAME" maxlength="20">
+                        <span class="step_url"></span>
+                    </span>
                 </div>
 
                 <div class="join_row">
@@ -40,11 +47,14 @@
                         <label for="pswd2">비밀번호 재확인</label>
                     </h3>
 
-                    <span class="ps_box int_pass_check" id="pswd2" name="pswd2" class="int" value="" title="비밀번호 재확인 입력" maxlength="20">
+                    <span class="ps_box int_pass">
+                        <input type="password" id="pswd2" name="pswd2" class="int" title="비밀번호 확인" value="" maxlength="20">
+                        <span class="step_url"></span>
+                    </span>
                 </div>
 
                 <div class="btn_area">
-                    <button type="button" id="btnjoin" class="btn_type btn_primary">
+                    <button type="button" id="registerbtn" class="btn_type btn_primary">
                         <span>가입하기</span>
                     </button>
                 </div>
