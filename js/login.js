@@ -4,6 +4,11 @@ const id=document.querySelector('#id'),
 
 loginBtn.addEventListener('click', loginhandler);
 
+document.querySelector('input').addEventListener('keypress',(e)=>{
+    if(e.key==='Enter'){
+        console.log('hi');
+    }
+})
 function loginhandler(){
     const req={
         id: id.value,
@@ -25,3 +30,5 @@ function loginhandler(){
         }
     }).catch((err)=>console.error("login error"));
 }
+
+module.exports=login;

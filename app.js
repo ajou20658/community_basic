@@ -4,8 +4,8 @@ const express=require("express");
 const app=express();
 const bodyParser= require("body-parser");
 const req = require("express/lib/request");
-const user=require("./js/models/userstorage");
-
+const User=require("./js/models/User");
+const Userstorage=require("./js/models/userstorage");
 
 app.set("views","./views");
 app.engine('html',require('ejs').renderFile);
@@ -30,21 +30,27 @@ app.listen(3000,()=>{
 })
 
 app.post("/login",(req,res)=>{
-  const id=req.body.id;
-  const pswd=req.body.pswd;
-  console.log(user.users);
-  if(user.users.id.includes(id)){
-    const idx=user.users.id.indexOf(id);
-    if(user.users.pswd[idx]===pswd){    
-      return res.json({
-          success: true,
-      });
-    }
-  }
+  const user=new User(req.body);
+  const response= user.login();
+  return res.json(response);
 
-  return res.json({
-    success:false,
-    msg: "로그인 실패",
-  });
+  // const success="";
+  // const msg="";
+  // console.log(userstorage.getusers("id","pswd","name"));
+
+  // if(user.users.id.includes(id)){
+  //   const idx=user.users.id.indexOf(id);
+  //   if(user.users.pswd[idx]===pswd){    
+  //     this.success="true";
+  //     return res.json({
+  //       success
+  //     });
+  //   }
+  // }
+  // this.success="false";
+  // return res.json({
+  //   success,
+  //   msg
+  // });
 });
 
